@@ -13,7 +13,7 @@ const AvailableCourses = () => {
   // Get courses that the student can enroll in (same department, not already enrolled)
   const availableCourses = courses.filter(course => 
     course.department === student.department && 
-    !student.courses.includes(course.id)
+    !(student.courses?.includes(course.id))
   );
 
   // Filter courses based on search term
