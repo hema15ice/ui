@@ -3,17 +3,19 @@ import { Search, BookOpen, Plus } from 'lucide-react';
 import { useDataContext } from '../../context/DataContext';
 import { useAuth } from '../../context/AuthContext';
 import { Student } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
 const AvailableCourses = () => {
   const { courses, enrollStudentInCourse } = useDataContext();
   const { currentUser } = useAuth();
   const student = currentUser as Student;
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   // Get courses that the student can enroll in (same department, not already enrolled)
   const availableCourses = courses.filter(course => 
     course.department === student.department && 
-    !(student.courses?.includes(course.id))
+    !student.courses?.includes(course.id)
   );
 
   // Filter courses based on search term
@@ -25,6 +27,8 @@ const AvailableCourses = () => {
 
   const handleEnroll = (courseId: string) => {
     enrollStudentInCourse(student.id, courseId);
+    // Navigate to enrolled courses after successful enrollment
+    navigate('/student/enrolled-courses');
   };
 
   return (
