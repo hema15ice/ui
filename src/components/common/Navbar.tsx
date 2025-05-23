@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { User, Menu, LogOut, Book, Users, GraduationCap, Calendar, FileText, ClipboardList } from 'lucide-react';
+import { User, Menu, LogOut, Book, Users, GraduationCap, Calendar, FileText, ClipboardList, BookOpen } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import ProfileDropdown from './ProfileDropdown';
 
@@ -32,6 +32,8 @@ const Navbar = () => {
       case 'student':
         return [
           { path: '/student', label: 'Dashboard', icon: <GraduationCap className="w-5 h-5" /> },
+          { path: '/student/available-courses', label: 'Available Courses', icon: <Book className="w-5 h-5" /> },
+          { path: '/student/enrolled-courses', label: 'Enrolled Courses', icon: <BookOpen className="w-5 h-5" /> },
         ];
       default:
         return [];

@@ -20,6 +20,8 @@ import FacultyGrading from './pages/faculty/Grading';
 import FacultyStudents from './pages/faculty/Students';
 import CourseDetails from './pages/student/CourseDetails';
 import GradeDetails from './pages/student/GradeDetails';
+import AvailableCourses from './pages/student/AvailableCourses';
+import EnrolledCourses from './pages/student/EnrolledCourses';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import RoleSelection from './pages/RoleSelection';
 
@@ -55,6 +57,8 @@ function App() {
           <Route path="/student/profile/edit" element={<ProtectedRoute role="student"><StudentEditProfile /></ProtectedRoute>} />
           <Route path="/student/course/:id" element={<ProtectedRoute role="student"><CourseDetails /></ProtectedRoute>} />
           <Route path="/student/grades/:id" element={<ProtectedRoute role="student"><GradeDetails /></ProtectedRoute>} />
+          <Route path="/student/available-courses" element={<ProtectedRoute role="student"><AvailableCourses /></ProtectedRoute>} />
+          <Route path="/student/enrolled-courses" element={<ProtectedRoute role="student"><EnrolledCourses /></ProtectedRoute>} />
           
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
